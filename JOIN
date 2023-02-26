@@ -1,0 +1,65 @@
+-- JOINS
+select * from departments; -- here I have only departments names ann Id's
+
+-- join departments and employees tables
+select * from employees
+join departments
+on employees.department_id = departments.department_id;  
+-------------------------------------------------------------------------------
+-- find employees who working IT in join tables
+select first_name, last_name, department_name from employees
+join departments
+on employees.department_id = departments.department_id
+where department_name = "IT"; 
+---------------------------------------------------------------------------------
+-- join 4 tables
+select * from employees
+join departments
+on employees.department_id = departments.department_id
+join locations
+on departments.location_id = locations.location_id
+join countries
+on locations.country_id = countries.country_id
+join regions 
+on countries.region_id = regions.region_id; 
+-------------------------------------------------------------------------------------
+--  join 4 tables with using less codes 
+select * from employees
+join departments using (department_id)
+join locations   using (location_id)
+join countries   using (country_id)
+join regions     using (region_id); 
+--------------------------------------------------------------------------------------
+-- Find employees who working from Canada in all tables with join
+select * from employees
+join departments
+on employees.department_id = departments.department_id
+join locations
+on departments.location_id = locations.location_id
+join countries
+on locations.country_id = countries.country_id
+join regions 
+on countries.region_id = regions.region_id
+where country_name = "Canada"; 
+-----------------------------------------------------------------------------------------
+-- sakila database -- find who played in the movie, actors
+select first_name, last_name, title from film
+join film_actor
+on film.film_id = film_actor.film_id
+join actor
+on actor.actor_id = film.film_id; 
+-------------------------------------------------------------------------------------------
+-- customer locations //join 3 tables and find who in Brazil
+select * from customer
+join address using (address_id)
+join city using (city_id)
+join country using (country_id)
+where country = "Brazil"; 
+--------------------------------------------------------------------------------------------
+ -- join 3 tables and sort customers by giving  zipcode 
+select first_name, last_name, email, phone, postal_code,city,country from customer
+join address using (address_id)
+join city using (city_id)
+join country using (country_id)
+where postal_code between 20000 and 45000; 
+
