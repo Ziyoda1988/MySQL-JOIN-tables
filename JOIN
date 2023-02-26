@@ -51,15 +51,15 @@ on actor.actor_id = film.film_id;
 -------------------------------------------------------------------------------------------
 -- customer locations //join 3 tables and find who in Brazil
 select * from customer
-join address using (address_id)
-join city using (city_id)
-join country using (country_id)
+join address  using (address_id)
+join city     using (city_id)
+join country  using (country_id)
 where country = "Brazil"; 
 --------------------------------------------------------------------------------------------
  -- join 3 tables and sort customers by giving  zipcode 
 select first_name, last_name, email, phone, postal_code,city,country from customer
-join address using (address_id)
-join city using (city_id)
-join country using (country_id)
+join address  using (address_id)
+join city     using (city_id)
+join country  using (country_id)
 where postal_code between 20000 and 45000; 
 
